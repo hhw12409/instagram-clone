@@ -9,6 +9,7 @@ import SearchFillIcon from "./ui/icons/SearchFillIcon";
 import NewIcon from "./ui/icons/NewIcon";
 import NewFillIcon from "./ui/icons/NewFillIcon";
 import ColorButton from "./ui/ColorButton";
+import { signIn } from "next-auth/react";
 
 const menu = [
   {
@@ -45,7 +46,12 @@ export default function Navbar() {
               </Link>
             </li>
           ))}
-          <ColorButton text="Sign in" onClick={() => {}} />
+          <ColorButton
+            text="Sign in"
+            onClick={() => {
+              signIn("google");
+            }}
+          />
         </ul>
       </nav>
     </div>
