@@ -3,7 +3,7 @@ import NextAuth from "next-auth";
 import type { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 
-export const options: NextAuthOptions = {
+export const OPTIONS: NextAuthOptions = {
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_OAUTH_ID || "",
@@ -13,11 +13,11 @@ export const options: NextAuthOptions = {
   session: {
     strategy: "jwt",
   },
-  jwt: {
-    secret: process.env.NEXTAUTH_SECRET,
-  },
+  // jwt: {
+  //   secret: process.env.NEXTAUTH_SECRET,
+  // },
 };
 
-const handler = NextAuth(options);
+const handler = NextAuth(OPTIONS);
 
 export { handler as GET, handler as POST };
