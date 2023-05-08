@@ -2,6 +2,13 @@ import NextAuth from "next-auth";
 import type { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 
+export type User = {
+  name: string;
+  email: string;
+  image: string;
+  username: string;
+};
+
 export const authOptions: NextAuthOptions = {
   providers: [
     GoogleProvider({
@@ -11,7 +18,7 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     async session({ session }) {
-      const user = session?.user;
+      const user: User = session?.user;
 
       if (user) {
         session.user = {
