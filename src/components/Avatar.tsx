@@ -12,6 +12,7 @@ export default function Avatar({ image }: Props) {
         alt="user-profile"
         src={image ?? undefined}
         className="rounded-full p-[0.1rem]"
+        referrerPolicy="no-referrer"
       />
     </div>
   );
