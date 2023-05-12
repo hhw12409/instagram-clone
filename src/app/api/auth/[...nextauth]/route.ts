@@ -1,15 +1,8 @@
 import { addUser } from "@/core/user";
+import { User } from "@/types/user";
 import NextAuth from "next-auth";
 import type { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
-import { signIn } from "next-auth/react";
-
-export type User = {
-  name: string;
-  email: string;
-  image: string;
-  username: string;
-};
 
 export const authOptions: NextAuthOptions = {
   providers: [
