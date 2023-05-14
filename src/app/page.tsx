@@ -12,10 +12,14 @@ export default async function HomePage() {
     redirect("/auth/signin");
   }
   return (
-    <section>
-      <FollowingBar />
-      <PostList />
-      <SideBar user={user} />
+    <section className="flex flex-col w-full md:flex-row max-w-[850px] p-4">
+      <div className="w-full basis-3/4">
+        <FollowingBar />
+        <PostList />
+      </div>
+      <div className="basis-1/4">
+        <SideBar user={user} />
+      </div>
     </section>
   );
 }

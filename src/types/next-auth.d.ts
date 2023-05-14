@@ -1,10 +1,8 @@
 // next auth type 재정의
-import NextAuth, { DefaultSession } from "next-auth/next";
+import { User } from "./user";
 
 declare module "next-auth" {
   interface Session {
-    user: {
-      username: string;
-    } & DefaultSession["user"];
+    user: User;
   }
 }

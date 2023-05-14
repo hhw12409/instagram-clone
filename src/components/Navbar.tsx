@@ -11,7 +11,6 @@ import NewFillIcon from "./ui/icons/NewFillIcon";
 import ColorButton from "./ui/ColorButton";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Avatar from "./Avatar";
-import { User } from "@/app/api/auth/[...nextauth]/route";
 
 const menu = [
   {
@@ -34,7 +33,7 @@ const menu = [
 export default function Navbar() {
   const pathName = usePathname();
   const { data: session } = useSession();
-  const user: User = session?.user;
+  const user = session?.user;
 
   return (
     <div className="flex items-center justify-between px-6">
@@ -53,7 +52,7 @@ export default function Navbar() {
           {user && (
             <li>
               <Link href={`/user/${user.username}`}>
-                <Avatar image={user.image} />
+                <Avatar image={user.image} size="small" highlight={true} />
               </Link>
             </li>
           )}
