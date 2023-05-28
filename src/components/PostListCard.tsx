@@ -2,17 +2,15 @@ import { SimplePost } from "@/types/post";
 import React from "react";
 import Avatar from "./Avatar";
 import Image from "next/image";
-import HeartIcon from "./ui/icons/HeartIcon";
-import BookmarkIcon from "./ui/icons/BookmarkIcon";
-import { parseDate } from "@/utils/date";
 import CommentForm from "./CommentForm";
 import ActionBar from "./ActionBar";
 
 type Props = {
   post: SimplePost;
+  priority?: boolean;
 };
 
-export default function PostListCard({ post }: Props) {
+export default function PostListCard({ post, priority = false }: Props) {
   const { userImage, username, image, createdAt, likes, text } = post;
   return (
     <article className="border border-gray-200 rounded-lg shadow-md">
@@ -26,6 +24,7 @@ export default function PostListCard({ post }: Props) {
         alt={`photo bt ${username}`}
         width={500}
         height={500}
+        priority={priority}
       />
       <ActionBar
         likes={likes}
