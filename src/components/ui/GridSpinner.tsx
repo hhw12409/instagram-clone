@@ -8,7 +8,7 @@ const GridLoader = dynamic(
 );
 
 type Props = {
-  color: string;
+  color?: string;
 };
 
 export default function GridSpinner({ color = "red" }: Props) {

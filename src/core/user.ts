@@ -34,3 +34,18 @@ export async function getUserByUsername(username?: string) {
   );
   return user;
 }
+
+export async function searchUsers(keyword?: string) {
+  // TODO: 필요한값만 가져오게끔 변경하기
+  const query = keyword
+    ? `&& (name match "${keyword}") || (username match "${keyword}")`
+    : "";
+  return client.fetch(
+    `*[_type == "user" ${query}]{
+      ...,
+      "following": count(following),
+      "followers": count(followers),
+    }
+    `
+  );
+}
