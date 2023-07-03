@@ -4,28 +4,32 @@ import { ProfileUser } from "@/types/user";
 import React, { FormEvent, useState } from "react";
 import useSWR from "swr";
 import GridSpinner from "./ui/GridSpinner";
+import UserCard from "./UserCard";
+import useDebounce from "@/hooks/useDebounce";
 
 export default function UserSearch() {
   const [keyword, setKeyword] = useState("");
+  const debouncedKeyword = useDebounce(keyword);
   const {
     data: users,
     isLoading,
     error,
-  } = useSWR<ProfileUser[]>(`/api/search/${keyword}`);
+  } = useSWR<ProfileUser[]>(`/api/search/${debouncedKeyword}`);
 
   const handleOnSubmitClick = (e: FormEvent) => {
     e.preventDefault();
   };
 
   return (
-    <>
-      <form onSubmit={handleOnSubmitClick}>
+    <section className="flex flex-col items-center w-full max-w-2xl my-4">
+      <form onSubmit={handleOnSubmitClick} className="w-full mb-4">
         <input
           type="text"
           autoFocus
           placeholder="Search for a username or name"
           value={keyword}
           onChange={(e) => setKeyword(e.target.value)}
+          className="w-full p-3 text-xl border border-gray-400 outline-none"
         />
       </form>
       {error && <p>Error occurs</p>}
@@ -33,14 +37,14 @@ export default function UserSearch() {
       {!isLoading && !error && users?.length === 0 && (
         <p>There are no users looking for</p>
       )}
-      <ul>
+      <ul className="w-full p-4">
         {users &&
           users.map((user) => (
             <li key={user.username}>
-              <p>{user.username}</p>
+              <UserCard user={user} />
             </li>
           ))}
       </ul>
-    </>
+    </section>
   );
 }
