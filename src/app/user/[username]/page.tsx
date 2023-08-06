@@ -1,3 +1,4 @@
+import UserProfile from "@/components/UserProfile";
 import { getUserForProfile } from "@/core/user";
 import { notFound } from "next/navigation";
 import React from "react";
@@ -13,5 +14,5 @@ export default async function UserPage({ params: { username } }: Props) {
   if (!user) {
     notFound();
   }
-  return <div>UserPage</div>;
+  return <UserProfile user={user} />;
 }
