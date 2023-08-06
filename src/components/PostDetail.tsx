@@ -1,4 +1,4 @@
-import { FullPost, SimplePost } from "@/types/post";
+import { FullPost, SimplePost } from "@/model/post";
 import Image from "next/image";
 import React from "react";
 import useSWR from "swr";

@@ -1,8 +1,7 @@
 "use client";
 
-import { SimplePost } from "@/types/post";
+import { SimplePost } from "@/model/post";
 import React, { useState } from "react";
-import Avatar from "./Avatar";
 import Image from "next/image";
 import CommentForm from "./CommentForm";
 import ActionBar from "./ActionBar";

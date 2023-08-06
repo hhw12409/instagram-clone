@@ -1,5 +1,5 @@
 import { addUser } from "@/core/user";
-import { User } from "@/types/user";
+import { AuthUser } from "@/model/user";
 import NextAuth from "next-auth";
 import type { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";

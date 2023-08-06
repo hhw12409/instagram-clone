@@ -1,4 +1,4 @@
-import { SimplePost } from "@/types/post";
+import { SimplePost } from "@/model/post";
 import { client, urlFor } from "./sanity";
 
 const simplePostProjection = `
