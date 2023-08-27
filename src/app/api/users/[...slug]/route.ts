@@ -1,3 +1,4 @@
+import { getLikedPostsOf, getPostsOf, getSavedPostsOf } from "@/core/posts";
 import { searchUsers } from "@/core/user";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -13,4 +14,13 @@ export async function GET(_: NextRequest, context: Context) {
   }
 
   const [username, query] = slug;
+
+  let request = getPostsOf;
+  if (query === "saved") {
+    request = getSavedPostsOf;
+  } else if (query === "liked") {
+    request = getLikedPostsOf;
+  }
+
+  return request(username).then((data) => NextResponse.json(data));
 }
