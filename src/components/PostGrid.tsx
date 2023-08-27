@@ -15,11 +15,16 @@ export default function PostGrid({ username, query }: Props) {
     isLoading,
     error,
   } = useSWR<SimplePost[]>(`/api/users/${username}/${query}`);
-  console.log(posts);
+  if (isLoading) {
+    return (
+      <div className="w-full text-center">
+        <GridSpinner />
+      </div>
+    );
+  }
   return (
     <div>
-      {isLoading && <GridSpinner />}
-      <ul>
+      <ul className="grid grid-cols-3 gap-4 px-8 py-4">
         {posts &&
           posts.map((post, index) => (
             <li key={post.id}>
