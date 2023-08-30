@@ -1,5 +1,5 @@
-import { RiBookMarkFill } from "react-icons/ri";
+import { RiBookmarkFill } from "react-icons/ri";
 
 export default function BookmarkFillIcon() {
-  return <RiBookMarkFill className="w-6 h-6" />;
+  return <RiBookmarkFill className="w-6 h-6" />;
 }

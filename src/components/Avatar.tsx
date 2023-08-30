@@ -17,6 +17,7 @@ export default function Avatar({
 }: Props) {
   return (
     <div className={getContainerStyle(size, highlight)}>
+      {/* User가 OAuth를 통해 로그인할 경우 이미지 URL이 계속 변경되므로 Next의 Image를 사용해서 셋팅하기 힘들다. 따라서 img태그를 이용해준다. */}
       <img
         alt="user-profile"
         src={image ?? "undefined"}
