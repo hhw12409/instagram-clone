@@ -85,3 +85,23 @@ export async function getSavedPostsOf(username: string) {
     )
     .then(mapPosts);
 }
+
+export async function putLikePost(postId: string, userId: string) {
+  return client
+    .patch(postId)
+    .setIfMissing({ likes: [] })
+    .append("likes", [
+      {
+        _ref: userId,
+        _type: "reference",
+      },
+    ])
+    .commit({ autoGenerateArrayKeys: true });
+}
+
+export async function putDisLikePost(postId: string, userId: string) {
+  return client
+    .patch(postId)
+    .unset([`likes[_ref=="${userId}"]`])
+    .commit();
+}
