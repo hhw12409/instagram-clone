@@ -1,5 +1,4 @@
 import { getLikedPostsOf, getPostsOf, getSavedPostsOf } from "@/core/posts";
-import { searchUsers } from "@/core/user";
 import { NextRequest, NextResponse } from "next/server";
 
 type Context = {

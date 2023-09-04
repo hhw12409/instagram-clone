@@ -66,7 +66,7 @@ export async function getPostsOf(username: string) {
 export async function getLikedPostsOf(username: string) {
   return client
     .fetch(
-      `*[_type == "post" && author->username == "${username}" in likes[]->username]
+      `*[_type == "post" && "${username}" in likes[]->username]
       | order(_createdAt desc){
        ${simplePostProjection} 
       }
