@@ -16,7 +16,7 @@ type Props = {
 };
 
 export default function PostListCard({ post, priority = false }: Props) {
-  const { userImage, username, image, createdAt, likes, text } = post;
+  const { userImage, username, image } = post;
   const [openModal, setOpenModal] = useState(false);
   return (
     <article className="border border-gray-200 rounded-lg shadow-md">
